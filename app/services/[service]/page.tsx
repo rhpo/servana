@@ -380,10 +380,7 @@ export default function ServicePage() {
               filter: "contrast(1.2) brightness(0.7)",
             }}
           >
-            <source
-              src="https://faithdubai.com/wp-content/uploads/2023/12/VID-FINAL-FAITH-1.mp4"
-              type="video/mp4"
-            />
+            <source src="videos/hero.mp4" type="video/mp4" />
             <div
               className="absolute inset-0 bg-cover bg-center bg-no-repeat"
               style={{
