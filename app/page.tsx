@@ -303,26 +303,19 @@ export default function HomePage() {
       {/* Hero Section with Video Background */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Video Background */}
+        <div dangerouslySetInnerHTML={{ __html: `
         <video
-          autoPlay
-          muted
           loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{
-            filter: "contrast(1.2) brightness(0.7)",
-          }}
-        >
-          <source src="videos/hero.mp4" type="video/mp4" />
-          {/* Fallback image in case video doesn't load */}
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: "url('/placeholder.svg?height=1080&width=1920')",
-              filter: "grayscale(100%) contrast(1.2)",
-            }}
-          />
-        </video>
+          muted
+          autoplay
+          playsinline
+          class="absolute inset-0 w-full h-full object-cover"
+        ><source src="videos/hero.mp4" type="video/mp4" />
+            class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style="background-image: url('/placeholder.svg?height=1080&width=1920'); filter: grayscale(100%) contrast(1.2);"
+          /></video>
+      ` }}></div>
+
 
         {/* Dark overlay for better text readability */}
         <div
