@@ -15,6 +15,7 @@ import Link from "next/link";
 import Logo from "@/lib/Logo";
 import WhatsAppButton from "@/components/whatsapp-button";
 import { useTheme } from "@/components/theme-provider";
+import { HeroVideo } from "@/components/HeroVideo";
 
 export default function ContactPage() {
   const { theme, isDarkTheme, setTheme } = useTheme();
@@ -93,34 +94,15 @@ export default function ContactPage() {
 
       {/* Hero Section with Video Background */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Video Background */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{
-            filter: "contrast(1.2) brightness(0.7)",
-          }}
-        >
-          <source src="videos/hero.mp4" type="video/mp4" />
-          {/* Fallback image in case video doesn't load */}
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: "url('/placeholder.svg?height=1080&width=1920')",
-              filter: "grayscale(100%) contrast(1.2)",
-            }}
-          />
-        </video>
+                <HeroVideo />
+
 
         {/* Dark overlay for better text readability */}
         <div
           className={`absolute inset-0 ${isDarkTheme ? "bg-black/70" : "bg-black/30"}`}
         />
 
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6">
+        <div className="relative z-30 text-center max-w-4xl mx-auto px-4 sm:px-6">
           <motion.h1
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}

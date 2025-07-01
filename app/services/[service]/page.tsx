@@ -10,6 +10,7 @@ import Link from "next/link";
 import Logo from "@/lib/Logo";
 import WhatsAppButton from "@/components/whatsapp-button";
 import { useTheme } from "@/components/theme-provider";
+import { HeroVideo } from "@/components/HeroVideo";
 
 const serviceData = {
   dining: {
@@ -228,7 +229,8 @@ const allServices = [
 
 export default function ServicePage() {
   const { service } = useParams() as { service: string };
-  const data = serviceData[service as keyof typeof serviceData];
+  // const data = serviceData[service as keyof typeof serviceData];
+  const data: any = serviceData[service as keyof typeof serviceData];
   const [currentSlide, setCurrentSlide] = useState(0);
   const { theme, isDarkTheme, setTheme } = useTheme();
 
@@ -263,25 +265,7 @@ export default function ServicePage() {
 
   const featuredServices = getFeaturedServices();
 
-  const nextSlide = () => {
-    if (data.type === "slider" && data.images) {
-      setCurrentSlide((prev) => (prev + 1) % data.images.length);
-    } else if (data.type === "car-slider" && data.cars) {
-      setCurrentSlide((prev) => (prev + 1) % data.cars.length);
-    }
-  };
 
-  const prevSlide = () => {
-    if (data.type === "slider" && data.images) {
-      setCurrentSlide(
-        (prev) => (prev - 1 + data.images.length) % data.images.length,
-      );
-    } else if (data.type === "car-slider" && data.cars) {
-      setCurrentSlide(
-        (prev) => (prev - 1 + data.cars.length) % data.cars.length,
-      );
-    }
-  };
 
   const themeClasses = {
     background: isDarkTheme ? "bg-black" : "bg-white",
@@ -370,26 +354,7 @@ export default function ServicePage() {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Video Background for Nightlife, otherwise image */}
         {data.type === "text-with-video" ? (
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{
-              filter: "contrast(1.2) brightness(0.7)",
-            }}
-          >
-            <source src="videos/hero.mp4" type="video/mp4" />
-            <div
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-              style={{
-                backgroundImage:
-                  "url('/placeholder.svg?height=1080&width=1920')",
-                filter: "grayscale(100%) contrast(1.2)",
-              }}
-            />
-          </video>
+          <HeroVideo />
         ) : data.background ? (
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -412,7 +377,7 @@ export default function ServicePage() {
           className={`absolute inset-0 ${isDarkTheme ? "bg-black/70" : "bg-black/30"}`}
         />
 
-        <div className="relative z-10 text-center max-w-5xl mx-auto px-4 sm:px-6">
+        <div className="relative z-30 text-center max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -471,7 +436,7 @@ export default function ServicePage() {
           {/* Cities Layout for Dining */}
           {data.type === "cities" && data.cities && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-              {data.cities.map((city, index) => (
+              {data.cities.map((city: { name: string; image?: string; description?: string }, index: number) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 30 }}
@@ -517,7 +482,7 @@ export default function ServicePage() {
           {/* Yachts Layout */}
           {data.type === "yachts" && data.yachts && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
-              {data.yachts.map((yacht, index) => (
+              {data.yachts.map((yacht: { name: string; image?: string; description?: string; guests?: number }, index: number) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 30 }}
@@ -676,7 +641,7 @@ export default function ServicePage() {
                   <ul
                     className={`text-left max-w-2xl mx-auto space-y-2 ${themeClasses.textSecondary}`}
                   >
-                    {data.content.features.map((feature, idx) => (
+                    {data.content.features.map((feature: string, idx: number) => (
                       <li key={idx} className="flex items-start">
                         <span className="text-yellow-500 mr-2">•</span>
                         <span className="text-sm sm:text-base">{feature}</span>
