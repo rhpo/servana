@@ -10,6 +10,14 @@ import WhatsAppButton from "@/components/whatsapp-button";
 import { useTheme } from "@/components/theme-provider";
 import { HeroVideo } from "@/components/HeroVideo";
 
+/**
+ * React component representing the main layout of a luxury lifestyle website.
+ * This component includes various sections such as hero, services, testimonials,
+ * Instagram feed, contact information, and a footer.
+ *
+ * @component MainLayout
+ * @returns {JSX.Element} The rendered JSX for the main layout.
+ */
 export default function AboutPage() {
   const { theme, isDarkTheme, setTheme } = useTheme();
   const whatsappUrl = `https://api.whatsapp.com/send?phone=971502438793&text=Hi Servana Circle, I’m ready to unlock an exclusive Dubai experience. Please let me know what’s available.`;
