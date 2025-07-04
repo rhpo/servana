@@ -19,6 +19,11 @@ import { useTheme } from "@/components/theme-provider";
 import { HeroVideo } from "@/components/HeroVideo";
 import { services } from "@/lib/data";
 
+/**
+ * Represents the main component of the Servana Circle website, responsible for rendering all sections and components.
+ *
+ * @returns {JSX.Element} The JSX element representing the entire webpage layout.
+ */
 export default function HomePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { theme, isDarkTheme, setTheme } = useTheme();
