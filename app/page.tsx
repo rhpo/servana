@@ -17,81 +17,7 @@ import Logo from "@/lib/Logo";
 import WhatsAppButton from "@/components/whatsapp-button";
 import { useTheme } from "@/components/theme-provider";
 import { HeroVideo } from "@/components/HeroVideo";
-
-const services = [
-  {
-    id: "dining",
-    title: "Luxury Dining Experiences",
-    icon: "🍽️",
-    description:
-      "From skyline views to beachfront elegance, seamless access to Dubai's most refined culinary destinations.",
-    image: "/images/cook.png",
-  },
-  {
-    id: "yachts",
-    title: "Yacht Charters & Private Cruises",
-    icon: "⛵",
-    description:
-      "Sail the Arabian Gulf aboard curated yachts that define elegance and sophistication.",
-    image: "/images/boat.png",
-  },
-  {
-    id: "nightlife",
-    title: "Nightlife & Elite Lounge Access",
-    icon: "🍸",
-    description:
-      "Dubai after dark is electric ,  and we hold the keys to premium experiences.",
-    image: "/images/night.png",
-  },
-  {
-    id: "beach-clubs",
-    title: "Beach Clubs & Poolside Escapes",
-    icon: "🏖️",
-    description:
-      "Sun-soaked indulgence at Dubai's most iconic beach clubs and pools.",
-    image: "/images/beachclubs.png",
-  },
-  {
-    id: "luxury-cars",
-    title: "Luxury & Exotic Car Rentals",
-    icon: "🚘",
-    description:
-      "Drive your dream through Dubai with our handpicked fleet of supercars.",
-    image: "/images/cars.png",
-  },
-  {
-    id: "desert",
-    title: "Desert Escapes & Safari Adventures",
-    icon: "🏜️",
-    description:
-      "Golden silence and adrenaline in Dubai's magnificent desert landscapes.",
-    image: "/images/safari.png",
-  },
-  {
-    id: "water-activities",
-    title: "Water Activities & Sea Thrills",
-    icon: "🌊",
-    description:
-      "Dive into Dubai's playful side with exciting marine experiences.",
-    image: "/images/water.png",
-  },
-  {
-    id: "helicopter",
-    title: "Helicopter & Aerial Experiences",
-    icon: "🚁",
-    description:
-      "Soar above the city in private helicopters with breathtaking views.",
-    image: "/images/helicopter.png",
-  },
-  {
-    id: "family",
-    title: "Family & Cultural Explorations",
-    icon: "🐾",
-    description:
-      "Luxury meets discovery for all ages with curated family experiences.",
-    image: "/images/family.png",
-  },
-];
+import { services } from "@/lib/data";
 
 export default function HomePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -303,12 +229,13 @@ export default function HomePage() {
 
       {/* Hero Section with Video Background */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-
         <HeroVideo />
 
         {/* Dark overlay for better text readability */}
         <div
-          className={`absolute inset-0 ${isDarkTheme ? "bg-black/50" : "bg-black/10"}`}
+          className={`absolute inset-0 ${
+            isDarkTheme ? "bg-black/50" : "bg-black/10"
+          }`}
         />
 
         <div className="relative z-30 text-center max-w-4xl mx-auto px-6">
@@ -336,9 +263,7 @@ export default function HomePage() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-lg sm:text-xl md:text-2xl font-light text-white mb-12 max-w-2xl mx-auto leading-relaxed"
           >
-            Live the Privilege. Discover Dubai's most luxurious lifestyle
-            experiences , designed for those who settle for nothing less than
-            extraordinary.
+            Unlock the Circle. Step into Dubai Elite with Servana.
           </motion.p>
 
           <motion.div
@@ -398,7 +323,7 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-3xl sm:text-4xl md:text-6xl luxury-heading mb-12 leading-tight"
           >
-            exceptional access to ensure your experience in dubai is
+            exceptional access to ensure your experience in Dubai is
             unforgettable
           </motion.h2>
 
@@ -445,7 +370,7 @@ export default function HomePage() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
+            {services.map((service: any, index: number) => (
               <motion.div
                 key={service.id}
                 initial={{ opacity: 0, y: 50 }}
@@ -573,7 +498,7 @@ export default function HomePage() {
                 asChild
               >
                 <a
-                  href="https://instagram.com/servanacircle"
+                  href="https://instagram.com/servana_circle"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-2"

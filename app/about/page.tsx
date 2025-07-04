@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowLeft, Instagram, Sun, Moon } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Logo from "@/lib/Logo";
@@ -11,8 +12,8 @@ import { HeroVideo } from "@/components/HeroVideo";
 
 export default function AboutPage() {
   const { theme, isDarkTheme, setTheme } = useTheme();
-  const whatsappUrl = `https://api.whatsapp.com/send?phone=971502438793&text=Hello Servana Circle, I would like to learn more about your services.`;
-  const joinCircleUrl = `https://api.whatsapp.com/send?phone=971502438793&text=Hello I'm interested in the Servana Circle, can I please know more?`;
+  const whatsappUrl = `https://api.whatsapp.com/send?phone=971502438793&text=Hi Servana Circle, I’m ready to unlock an exclusive Dubai experience. Please let me know what’s available.`;
+  const joinCircleUrl = `https://api.whatsapp.com/send?phone=971502438793&text=Hi Servana Circle, I’m ready to unlock an exclusive Dubai experience. Please let me know what’s available.`;
 
   const toggleTheme = () => {
     setTheme(isDarkTheme ? "light" : "dark");
@@ -83,16 +84,14 @@ export default function AboutPage() {
               )}
             </motion.button>
 
-            <Button
-              variant="outline"
-              size="sm"
-              className={`${themeClasses.buttonOutline} transition-all duration-300 bg-transparent text-xs sm:text-sm px-3 sm:px-4`}
-              asChild
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 text-xxl"
             >
-              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-                CONTACT US
-              </a>
-            </Button>
+              <FaWhatsapp size={26} />
+            </a>
           </div>
         </div>
       </motion.nav>
@@ -103,7 +102,9 @@ export default function AboutPage() {
 
         {/* Dark overlay for better text readability */}
         <div
-          className={`absolute inset-0 ${isDarkTheme ? "bg-black/70" : "bg-black/30"}`}
+          className={`absolute inset-0 ${
+            isDarkTheme ? "bg-black/70" : "bg-black/30"
+          }`}
         />
 
         <div className="relative z-30 text-center max-w-4xl mx-auto px-4 sm:px-6">
@@ -317,7 +318,7 @@ export default function AboutPage() {
                 asChild
               >
                 <a
-                  href="https://instagram.com/servanacircle"
+                  href="https://instagram.com/servana_circle"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-2"

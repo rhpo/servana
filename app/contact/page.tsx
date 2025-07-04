@@ -20,8 +20,11 @@ import { HeroVideo } from "@/components/HeroVideo";
 export default function ContactPage() {
   const { theme, isDarkTheme, setTheme } = useTheme();
   const whatsappNumber = "+971502438793";
-  const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber.replace("+", "")}&text=Hello Servana Circle, I would like to get in touch with you.`;
-  const joinCircleUrl = `https://api.whatsapp.com/send?phone=971502438793&text=Hello I'm interested in the Servana Circle, can I please know more?`;
+  const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber.replace(
+    "+",
+    ""
+  )}&text=Hi Servana Circle, I’m ready to unlock an exclusive Dubai experience. Please let me know what’s available.`;
+  const joinCircleUrl = `https://api.whatsapp.com/send?phone=971502438793&text=Hi Servana Circle, I’m ready to unlock an exclusive Dubai experience. Please let me know what’s available.`;
 
   const toggleTheme = () => {
     setTheme(isDarkTheme ? "light" : "dark");
@@ -94,12 +97,13 @@ export default function ContactPage() {
 
       {/* Hero Section with Video Background */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-                <HeroVideo />
-
+        <HeroVideo />
 
         {/* Dark overlay for better text readability */}
         <div
-          className={`absolute inset-0 ${isDarkTheme ? "bg-black/70" : "bg-black/30"}`}
+          className={`absolute inset-0 ${
+            isDarkTheme ? "bg-black/70" : "bg-black/30"
+          }`}
         />
 
         <div className="relative z-30 text-center max-w-4xl mx-auto px-4 sm:px-6">
@@ -200,7 +204,7 @@ export default function ContactPage() {
                   asChild
                 >
                   <a
-                    href="https://instagram.com/servanacircle"
+                    href="https://instagram.com/servana_circle"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -273,11 +277,15 @@ export default function ContactPage() {
               <Button
                 variant="outline"
                 size="lg"
-                className={`bg-transparent border-2 ${isDarkTheme ? "border-white text-white hover:bg-white hover:text-black" : "border-black text-black hover:bg-black hover:text-white"} transition-all duration-300 px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base tracking-wide`}
+                className={`bg-transparent border-2 ${
+                  isDarkTheme
+                    ? "border-white text-white hover:bg-white hover:text-black"
+                    : "border-black text-black hover:bg-black hover:text-white"
+                } transition-all duration-300 px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base tracking-wide`}
                 asChild
               >
                 <a
-                  href="https://instagram.com/servanacircle"
+                  href="https://instagram.com/servana_circle"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-2"
