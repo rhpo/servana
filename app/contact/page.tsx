@@ -17,6 +17,15 @@ import WhatsAppButton from "@/components/whatsapp-button";
 import { useTheme } from "@/components/theme-provider";
 import { HeroVideo } from "@/components/HeroVideo";
 
+/**
+ * Contact component for Servana Circle, displaying various contact methods and information.
+ *
+ * This component renders a contact page with sections for messaging, Instagram,
+ * email, concierge services, and footer details. It includes interactive elements
+ * such as buttons that open links in new tabs and handle WhatsApp interactions.
+ *
+ * @returns {JSX.Element} - The JSX representation of the Contact component.
+ */
 export default function ContactPage() {
   const { theme, isDarkTheme, setTheme } = useTheme();
   const whatsappNumber = "+971502438793";

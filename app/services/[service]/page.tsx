@@ -13,6 +13,19 @@ import { useTheme } from "@/components/theme-provider";
 import { HeroVideo } from "@/components/HeroVideo";
 import { serviceData, services } from "@/lib/data";
 
+/**
+ * ServanaCircle Component
+ *
+ * This component represents the main landing page of the Servana Circle website.
+ * It includes sections for various services, featured experiences, Instagram highlights,
+ * and a concierge section. The component uses React hooks and animations to provide
+ * an interactive user experience.
+ *
+ * @component
+ * @example
+ * // Render the ServanaCircle component in your application
+ * <ServanaCircle />
+ */
 export default function ServicePage() {
   const { service } = useParams() as { service: string };
   // const data = serviceData[service as keyof typeof serviceData];
@@ -37,6 +50,9 @@ export default function ServicePage() {
     ""
   )}&text=Hello Servana Circle, I would like to get in touch with you.`;
 
+  /**
+   * Generates a WhatsApp URL with a message for inquiry about a service or item.
+   */
   const getWhatsappUrlForService = (serviceName: string, itemName?: string) => {
     const message = itemName
       ? `Hey Servana, I'm interested in ${itemName} of ${serviceName} service, can I get to know more?`
@@ -48,6 +64,9 @@ export default function ServicePage() {
   };
 
   // Get 4 random featured services (excluding current service)
+  /**
+   * Retrieves and shuffles featured services excluding a specified service.
+   */
   const getFeaturedServices = () => {
     const otherServices = services.filter((s) => s.id !== service);
     const shuffled = [...otherServices].sort(() => 0.5 - Math.random());
