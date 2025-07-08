@@ -20,6 +20,13 @@ import { HeroVideo } from "@/components/HeroVideo";
 import { services } from "@/lib/data";
 import Footer from "@/components/footer";
 
+/**
+ * The HomePage component represents the main page of the application, displaying various sections such as navigation, hero section, about section, services grid, and footer.
+ *
+ * It includes interactive elements like mobile menu toggling, theme switching based on user preference, dynamic video background, and smooth scrolling animations.
+ *
+ * @returns {JSX.Element} - The rendered HomePage component.
+ */
 export default function HomePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { theme, isDarkTheme, setTheme } = useTheme();
