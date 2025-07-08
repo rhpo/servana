@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [
       {
-        url: "/images/banner.jpg",
+        url: "https://servanacircle.netlify.app/images/banner.jpg",
         width: 1200,
         height: 630,
         alt: "Servana Circle - Unlock the Circle. Live the Privilege.",
