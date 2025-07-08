@@ -197,10 +197,10 @@ export default function DiscountModal() {
               <h2
                 className={`text-2xl font-bold mb-2 ${themeClasses.text} pr-8`}
               >
-                Subscribe to Unlock Insider Access.
+                Welcome to the Circle, where everything else is ordinary.
               </h2>
               <p className={`${themeClasses.textMuted} mb-4 text-sm`}>
-                Join the Circle and get your first experience discount 🤫
+                Join the Circle and get your first experience discount!
               </p>
             </motion.div>
 

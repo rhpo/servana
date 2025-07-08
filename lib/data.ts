@@ -7,18 +7,28 @@ export const serviceData = {
       "Experience Dubai's culinary excellence through our curated network of premium restaurants across the city's most prestigious locations.",
     type: "cities",
     background: "/images/wallpaper/dining.png",
-    cities: [
+    content: {
+      title: "LUXURY DINING IN DUBAI",
+      subtitle: "YOUR DUBAI DINING EXPERIENCE",
+      text: "Dubai is a city of culinary delights, and we are here to help you discover the best restaurants in Dubai. Whether you are looking for a romantic dinner for two, a family meal or a night out with friends – we have got you covered. We will ensure your access to the best restaurants, at the lowest minimum spend.",
+      video: [
+        "/videos/hero/dinner/2.mp4",
+        "/videos/hero/dinner/1.mp4",
+        "/videos/hero/dinner/3.mp4",
+      ],
+      videoThumbnail: "/images/dining.png",
+      cities: [
       {
         name: "DUBAI MARINA",
         description:
           "With the most amazing views, both day and night, you cannot go wrong in Dubai Marina. Enjoy anything from a romantic dinner for two, have a coffee at Marina Mall whilst watch the yachts go by, or let your hair down with a wild night out with friends.",
-        image: "/images/places/marina.png",
+        image: "/images/places/marina.jpg",
       },
       {
         name: "Palm Jumeirah",
         description:
           "The palm is pure luxury, with the beach on your doorstep and access to the most incredible views of the iconic marina sky line – whether you are sipping a cocktail for sunset at one of the rooftop bars or you are dancing the night away at one of the amazing beach clubs.",
-        image: "/images/places/jumeriah.png",
+        image: "/images/places/jumeriah.webp",
       },
       {
         name: "Downtown Dubai",
@@ -33,6 +43,7 @@ export const serviceData = {
         image: "/images/places/madinat-jumeriah.png",
       },
     ],
+    }
   },
   yachts: {
     title: "Private Yacht Charters & Elite Cruises",
@@ -42,29 +53,38 @@ export const serviceData = {
       "Because every moment on the water should feel like it was made exclusively for you.",
     description:
       "Step aboard our elite collection of luxury yachts—each one meticulously appointed for unparalleled comfort, style, and service. Whether you're toasting under the stars or soaking in a Jacuzzi at sea, your voyage is tailored to perfection.",
-    type: "yachts",
-    yachts: [
-      {
-        name: "28ft Premium Cruiser",
-        guests: "Up to 7 Guests",
-        image: "/images/boats/28ft.png",
-      },
-      {
-        name: "47ft Executive Yacht",
-        guests: "Up to 12 Guests",
-        image: "/images/boats/47ft.png",
-      },
-      {
-        name: "76ft Grand Yacht",
-        guests: "Up to 40 Guests",
-        image: "/images/boats/76ft.png",
-      },
-      {
-        name: "85ft Jacuzzi Superyacht",
-        guests: "Up to 40 Guests",
-        image: "/images/boats/85ft.png",
-      },
-    ],
+    type: "images-with-custom-video",
+    content: {
+      video: [
+        "/videos/hero/yacht/0.mp4",
+        "/videos/hero/yacht/5.mp4",
+        "/videos/hero/yacht/2.mp4",
+      ],
+
+      videoThumbnail: "/images/yacht.png",
+
+      images: [
+        
+        {
+          src: "/videos/hero/yacht/1.mp4",
+          alt: "Luxury Yacht",
+          caption: "Luxury Yacht | Your Floating Paradise",
+        },
+        
+        {
+          src: "/images/boats/side.jpeg",
+          alt: "Yacht Side View",
+          caption: "Experience the Elegance | Luxury Yacht",
+        },
+        
+        {
+          src: "/videos/hero/yacht/3.mp4",
+          alt: "Luxury Yacht",
+          caption: "Night views From the Yacht | A Night to Remember",
+        },
+
+      ],
+    }
   },
   nightlife: {
     title: "Nightlife & Elite Lounge Access",
@@ -73,12 +93,21 @@ export const serviceData = {
     tagline: "Skip the lines. Own the night. Dance where the lights chase you.",
     description:
       "Experience Dubai's legendary nightlife through exclusive access to the city's most coveted venues, where every night becomes an unforgettable story.",
-    type: "text-with-video",
+    type: "image-with-custom-video",
     content: {
       title: "NIGHTLIFE IN DUBAI",
       subtitle: "YOUR DUBAI NIGHTLIFE EXPERIENCE",
       text: "Need some help with nightlife in Dubai? Not only can we provide our recommendations on the best Dubai bars and Dubai nightclubs – we will take care of any reservation requirements for you and your group. We will ensure your access to the best clubs, at the lowest minimum spend.",
-      image: "/images/night.png",
+      
+      video: [
+        "/videos/hero/night/2.mp4",
+        "/videos/hero/night/1.mp4",
+        "/videos/hero/night/3.mp4?",
+      ],
+
+      videoThumbnail: "/images/night.png",
+
+      image: "/images/night/1.avif",
     },
   },
   "beach-clubs": {
@@ -103,19 +132,46 @@ export const serviceData = {
     description:
       "Experience freedom on your own terms, or lean back and let us drive you in ultimate style.",
     background: "/images/wallpaper/cars.png",
-    type: "text-with-image",
+    type: "images-with-custom-video",
+    feature: "slider",
     content: {
       title: "LUXURY CAR RENTALS IN DUBAI",
       subtitle: "YOUR DUBAI DRIVING EXPERIENCE",
       text: "Transform your Dubai journey with our exclusive fleet of luxury and exotic vehicles. From sleek Lamborghinis to elegant Rolls-Royces, experience the city's stunning skyline and pristine roads in unparalleled style. Our concierge team ensures seamless delivery and pickup, so you can focus on the thrill of the drive.",
+
+      video: [
+        "/videos/hero/cars/2.mp4",
+        "/videos/hero/cars/1.mp4",
+        "/videos/hero/cars/3.mp4",
+      ],
+
       image: [
+
+        {
+          src: "/images/cars/1.jpg", // This would be actual road image
+          alt: "Luxury Driving Experience",
+          caption: "Unleash Your Inner Driver - Luxury on the Road",
+        },
+
+        {
+          src: "/images/cars/2.jpg", // This would be actual car image
+          alt: "Exotic Car Experience",
+          caption: "Exotic Car Experience - Drive Your Dream",
+        },
+
+        {
+          src: "/images/cars/3.jpeg", // This would be actual car image
+          alt: "Luxury Car Rental",
+          caption: "Luxury Car Rental - Style Meets Performance",
+        },
+
         {
           src: "/images/cars/client.png", // This would be actual self-driving image
           alt: "Self-Drive Luxury Experience",
           caption: "Drive Your Dream - Self-Drive Experience",
         },
         {
-          src: "/images/cars/chauffeur.png", // This would be actual chauffeur image
+          src: "/images/cars/chauffeur.webp", // This would be actual chauffeur image
           alt: "Chauffeured Luxury Experience",
           caption: "Chauffeured Elegance - Let Us Drive You",
         },
@@ -128,40 +184,45 @@ export const serviceData = {
     hero: "Golden silence and adrenaline in Dubai's magnificent desert landscapes.",
     tagline: "Where the city meets the infinite.",
     description:
-      "Venture into the heart of the Arabian Desert for an experience that combines traditional Bedouin culture with modern luxury.",
+      "Venture into the heart of the Arabian Desert for an experience that combines traditional culture with modern luxury.",
     type: "images-with-custom-video",
     content: {
       title: "DESERT SAFARI IN DUBAI",
       subtitle: "YOUR DUBAI DESERT EXPERIENCE",
-      text: "Escape the urban pulse and discover the timeless beauty of the Arabian Desert. From exhilarating dune bashing adventures to serene sunset dinners under a canopy of stars, our desert experiences blend authentic Bedouin traditions with contemporary luxury. Let the golden sands tell their ancient stories while you create new memories.",
-      video: "/videos/safari-bak.mp4", // Using the hero video for now, can be replaced with safari video
+      text: "Escape the urban pulse and discover the timeless beauty of the Arabian Desert. From exhilarating dune bashing adventures to serene sunset dinners under a canopy of stars, our desert experiences blend authentic traditions with contemporary luxury. Let the golden sands tell their ancient stories while you create new memories.",
+      video: [       
+          "/videos/hero/safari/1.mp4",
+          "/videos/hero/safari/4.mp4",
+          "/videos/hero/safari/2.mp4",
+          "/videos/hero/safari/3.mp4",
+      ],
       videoThumbnail: "/videos/safari.png",
       images: [
         {
-          src: "/images/safari/camel.png", // These would be actual camel ride images
+          src: "/images/safari/camel.png",
           alt: "Camel Rides",
           caption: "Traditional Camel Rides",
         },
         {
-          src: "/images/safari/quad.png", // These would be actual quad biking images
+          src: "/images/safari/quad.png",
           alt: "Quad Biking",
           caption: "Thrilling Quad Biking",
         },
         {
-          src: "/images/safari/barbecue.png", // These would be actual barbecue images
+          src: "/images/safari/barbecue.mp4",
           alt: "Barbecue Dinner",
           caption: "Desert Barbecue Dinner",
         },
         {
-          src: "/images/safari/dune.png", // These would be actual dune bashing images
+          src: "/images/safari/dune.mp4", 
           alt: "Dune Bashing",
           caption: "Exciting Dune Bashing",
         },
         {
-          src: "/images/safari/bedouin.png", // These would be actual entertainment images
-          alt: "Traditional Entertainment",
-          caption: "Authentic Bedouin Entertainment",
-        },
+          src: "/images/safari/skate.png",
+          alt: "Dune Skateboarding",
+          caption: "Dune Skateboarding",
+        }
       ],
     },
   },
@@ -172,29 +233,63 @@ export const serviceData = {
     tagline: "Where adventure meets the azure.",
     description:
       "Explore Dubai's stunning coastline through exhilarating water sports and marine adventures.",
-    type: "text-with-image",
+    type: "images-with-custom-video",
     content: {
       title: "WATER ACTIVITIES IN DUBAI",
       subtitle: "YOUR DUBAI MARINE EXPERIENCE",
       text: "Dubai's pristine coastline offers endless aquatic adventures. From high-speed jet skiing across the Persian Gulf to peaceful paddleboarding at sunrise, our water activities cater to every thrill level. Dive into crystal-clear waters, explore vibrant marine life, or simply cruise along the iconic Dubai Marina – the choice is yours.",
-      image: "/images/water.png",
+      
+      video: [
+        "/videos/hero/water/2.mp4",
+        "/videos/hero/water/1.mp4",
+        "/videos/hero/water/4.mp4",
+      ],
+
+      videoThumbnail: "/images/water.png",
+
+      images: [
+        {
+          src: "/images/water/rocket.jpg",
+          alt: "Flyboarding",
+          caption: "Flyboarding - Serenity on the Water",
+        },
+                {
+          src: "/images/water/jetski.jpg", // This would be actual jetski image
+          alt: "Jet Ski Adventure",
+          caption: "Jet Ski Adventure - Thrill on the Waves",
+        },
+        {
+          src: "/images/water/surf.png", // This would be actual snorkeling image
+          alt: "Snorkeling",
+          caption: "Snorkeling - Discover Marine Life",
+        },
+        {
+          src: "/images/water/boat.jpeg", // This would be actual boat image
+          alt: "Boat Adventure",
+          caption: "Boat Adventure - Thrill on the Waves",
+        },
+      ], 
     },
   },
   helicopter: {
     title: "Helicopter & Aerial Experiences",
-    background: "/images/wallpaper/helicopter.png",
+    background: "/images/wallpaper/helicopter.jpg",
     hero: "Soar above the city in private helicopters with breathtaking views.",
     tagline: "See Dubai from where dreams are made.",
-    // "Experience Dubai from a perspective reserved for the few. Our helicopter tours offer unparalleled views of the city's iconic landmarks."
-    type: "helicopter-tours",
+    type: "image-with-custom-video",
     content: {
       title: "LUXURY CONCIERGE SERVICES IN DUBAI",
       subtitle: "HELICOPTER TOUR OF DUBAI",
       description:
         "See the sites of Dubai from the luxury of a helicopter. Choose from four aerial tour options guaranteeing breathtaking views of the city.",
-      features: [
-        "Soar over Dubai’s icons with a private helicopter tour! A breathtaking experience from takeoff to landing.",
+      
+      text: "Soar over Dubai’s icons with a private helicopter tour, a breathtaking experience from takeoff to landing. Witness the grandeur of the Burj Khalifa, the Palm Jumeirah, and the stunning coastline from above. Our helicopter experiences are designed for those who seek a unique perspective on this vibrant city.",
+      video: [
+        "/videos/hero/helicopter/2.mp4",
+        "/videos/hero/helicopter/3.mp4",
+        "/videos/hero/helicopter/1.mp4",
       ],
+
       image: "/images/helicopter.png",
     },
   },
@@ -251,45 +346,100 @@ export const serviceData = {
     tagline: "Wake up where you want to be.",
     description:
       "From sunset-view penthouses to hidden desert villas, our team secures your dream stay, fully tailored to your taste.",
-    type: "text-with-image",
+    type: "images-with-custom-video",
     cta: "Plan My Stay",
     content: {
       title: "LUXURY ACCOMMODATIONS IN DUBAI",
       subtitle: "YOUR PRIVATE RETREAT EXPERIENCE",
-      text: "Experience Dubai from the comfort of your perfect sanctuary. Our Stay Designer service ensures every detail matches your vision — from oceanfront penthouses with infinity pools to secluded desert villas under starlit skies. We don't just book rooms; we curate your ideal home away from home, where luxury meets your personal style.",
-      image: "/images/wallpaper/room.png",
+      text: "Experience Dubai from the comfort of your perfect sanctuary. Our Stay Designer service ensures every detail matches your vision, from oceanfront penthouses with infinity pools to secluded desert villas under starlit skies. We don't just book rooms; we curate your ideal home away from home, where luxury meets your personal style.",
+      
+      video: [
+          "/videos/hero/stay/1.mp4",
+          "/videos/hero/stay/2.mp4",
+          "/videos/hero/stay/3.mp4",
+      ],
+
+      videoThumbnail: "/images/stay.png",
+
+      images: [
+        {
+          src: "/images/stay/1.jpeg", 
+          alt: "Private Oasis",
+          caption: "Your Private Oasis | Dubai Stay",
+        },
+        {
+          src: "/images/stay/2.jpeg", 
+          alt: "Villa",
+          caption: "Dubai Between your Eyes | Villa",
+        },
+        {
+          src: "/images/stay/3.jpeg", 
+          alt: "Luxury Suite",
+          caption: "Luxury Suite | Dubai Stay",
+        },
+      ],
     },
   },
   "private-jet": {
     title: "Private Jet",
-    background: "/images/jet-hero.png",
+    background: "/videos/hero/plane/1.mp4",
     hero: "Take Off On Your Time",
     tagline: "We move as you move.",
     description:
-      "Your private jet, ready when you are. Servana Circle handles every detail — routes, crew, ground transfers — so you just step in and fly.",
-    type: "text-with-image",
+      "Your private jet, ready when you are. Servana Circle handles every detail, routes, crew, ground transfers, so you just step in and fly.",
+    type: "image-with-custom-video",
+
     cta: "Request My Jet",
     content: {
       title: "PRIVATE AVIATION SERVICES",
       subtitle: "YOUR SKY, YOUR SCHEDULE",
-      text: "From romantic getaways to last-minute business flights, experience the ultimate in aviation luxury. Our private jet service eliminates the ordinary — no lines, no delays, just seamless travel on your terms. Whether it's a sunset flight over the Arabian Gulf or an international business trip, we handle every detail so you can focus on what matters most.",
+      text: "From romantic getaways to last-minute business flights, experience the ultimate in aviation luxury. Our private jet service eliminates the ordinary, no lines, no delays, just seamless travel on your terms. Whether it's a sunset flight over the Arabian Gulf or an international business trip, we handle every detail so you can focus on what matters most.",
+      
       image: "/images/jet.png",
+
+      video: [
+          "/videos/hero/plane/1.mp4",
+          "/videos/hero/plane/2.mp4",
+          "/videos/hero/plane/3.mp4",
+      ],
+
+      videoThumbnail: "/images/jet.png",
     },
   },
   "vip-haircut": {
     title: "VIP Haircut",
-    background: "/images/haircut.png",
+    background: "/images/haircut/1.jpg",
     hero: "A Barber. A Chair. Anywhere.",
     tagline: "Your style, your space, your time.",
     description:
-      "From your villa balcony to your yacht deck, get a professional cut by Dubai's best stylists — at your place, on your time.",
-    type: "text-with-image",
+      "From your villa balcony to your yacht deck, get a professional cut by Dubai's best stylists, at your place, on your time.",
+    type: "image-with-custom-video",
     cta: "Book My VIP Cut",
     content: {
       title: "VIP GROOMING SERVICES",
       subtitle: "GENTLEMEN'S GROOMING CONCIERGE",
       text: "Elevate your grooming experience with Dubai's finest stylists coming to you. Whether you're preparing for a business meeting on your yacht or want to refresh your look poolside at your villa, our Gentlemen's Grooming Concierge delivers professional cuts, beard trims, and spa-quality treatments wherever you are. Style has never been this convenient.",
-      image: "/images/haircut.png",
+      
+      video: [
+        "/videos/hero/haircut/0.mp4",
+        "/videos/hero/haircut/2.mp4",
+        "/videos/hero/haircut/3.mp4",
+      ],
+
+      videoThumbnail: "/images/haircut.png",
+
+      image: [
+        {
+          src: "/images/haircut/1.jpg", // This would be actual haircut image
+          alt: "VIP Haircut",
+          caption: "VIP Haircut - Style Delivered",
+        },
+        {
+          src: "/images/haircut/2.png", // This would be actual beard trim image
+          alt: "Beard Trim",
+          caption: "Perfect Trims - Grooming Excellence",
+        },
+      ],
     }
   }
 };
@@ -299,27 +449,31 @@ export const services = [
       {
         id: "dining",
         title: "Luxury Dining Experiences",
+        short: "Luxury Dining",
         description:
           "From skyline views to beachfront elegance, seamless access to Dubai's most refined culinary destinations.",
-        image: "/images/cook.png",
+        image: "/images/dinner/2.jpeg",
       },
       {
         id: "yachts",
         title: "Yacht Charters & Private Cruises",
+        short: "Yacht Charters",
         description:
           "Sail the Arabian Gulf aboard curated yachts that define elegance and sophistication.",
-        image: "/images/boat.png",
+        image: "/images/boats/full.jpeg",
       },
       {
         id: "nightlife",
         title: "Nightlife & Elite Lounge Access",
+        short: "Nightlife Access",
         description:
-          "Dubai after dark is electric,  and we hold the keys to premium experiences.",
-        image: "/images/night.png",
+          "Dubai after dark is electric, and we hold the keys to premium experiences.",
+        image: "/images/night/1.avif",
       },
       {
         id: "beach-clubs",
         title: "Beach Clubs & Poolside Escapes",
+        short: "Beach Clubs",
         description:
           "Sun-soaked indulgence at Dubai's most iconic beach clubs and pools.",
         image: "/images/beachclubs.png",
@@ -327,20 +481,23 @@ export const services = [
       {
         id: "luxury-cars",
         title: "Luxury & Exotic Car Rentals",
+        short: "Luxury Cars",
         description:
           "Drive your dream through Dubai with our handpicked fleet of supercars.",
-        image: "/images/cars.png",
+        image: "/images/cars.jpg",
       },
       {
         id: "desert",
         title: "Desert Escapes & Safari Adventures",
+        short: "Desert Adventures",
         description:
           "Golden silence and adrenaline in Dubai's magnificent desert landscapes.",
-        image: "/images/safari.png",
+        image: "/images/safari.jpeg",
       },
       {
         id: "water-activities",
         title: "Water Activities & Sea Thrills",
+        short: "Water Activities",
         description:
           "Dive into Dubai's playful side with exciting marine experiences.",
         image: "/images/water.png",
@@ -348,27 +505,31 @@ export const services = [
       {
         id: "helicopter",
         title: "Helicopter & Aerial Experiences",
+        short: "Aerial Experiences",
         description:
           "Soar above the city in private helicopters with breathtaking views.",
-        image: "/images/helicopter.png",
+        image: "/images/helicopter.jpg",
       },
       {
         id: "family",
         title: "Family & Cultural Explorations",
+        short: "Family Explorations",
         description:
           "Luxury meets discovery for all ages with curated family experiences.",
-        image: "/images/family.png",
+        image: "/images/family.jpg",
       },
       {
         id: "luxury-stay",
-        title: "Luxury Stay — Your Private Retreat",
+        title: "Luxury Stay, Your Private Retreat",
+        short: "Luxury Stay",
         description:
           "From sunset-view penthouses to hidden desert villas, your dream stay awaits.",
-        image: "/images/stay.png",
+        image: "/images/stay/2.jpeg",
       },
       {
         id: "private-jet",
         title: "Private Jet | Your Sky, Your Rules",
+        short: "Private Jet",
         description:
           "Your private jet, ready when you are. Fly on your terms with seamless service.",
         image: "/images/jet.png",
@@ -376,8 +537,9 @@ export const services = [
       {
         id: "vip-haircut",
         title: "VIP Haircut | Style Delivered",
+        short: "VIP Haircut",
         description:
           "A barber. A chair. Anywhere. Professional cuts by Dubai's best stylists at your place.",
-        image: "/images/haircut.png",
+        image: "/images/haircut/1.jpg",
       }
 ];

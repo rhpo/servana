@@ -12,6 +12,8 @@ import WhatsAppButton from "@/components/whatsapp-button";
 import { useTheme } from "@/components/theme-provider";
 import { HeroVideo } from "@/components/HeroVideo";
 import { serviceData, services } from "@/lib/data";
+import Footer from "@/components/footer";
+import ImageSlider from "@/components/slider";
 
 export default function ServicePage() {
   const { service } = useParams() as { service: string };
@@ -144,8 +146,14 @@ export default function ServicePage() {
         {/* Video Background for Nightlife and Desert Safari, otherwise image */}
         {data.type === "text-with-video" ? (
           <HeroVideo />
-        ) : data.type === "images-with-custom-video" && data.content?.video ? (
-          <HeroVideo src={data.content.video} thumbnail={data.content.videoThumbnail} />
+        ) : (data.type === "images-with-custom-video" ||
+            data.type === "image-with-custom-video" ||
+            data.type === "cities") &&
+          data.content?.video ? (
+          <HeroVideo
+            src={data.content.video}
+            thumbnail={data.content.videoThumbnail}
+          />
         ) : data.background ? (
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -165,7 +173,7 @@ export default function ServicePage() {
 
         <div
           className={`absolute inset-0 ${
-            isDarkTheme ? "bg-black/70" : "bg-black/30"
+            isDarkTheme ? "bg-black/50" : "bg-black/30"
           }`}
         />
 
@@ -217,9 +225,9 @@ export default function ServicePage() {
           </motion.div>
 
           {/* Cities Layout for Dining */}
-          {data.type === "cities" && data.cities && (
+          {data.type === "cities" && data.content.cities && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-              {data.cities.map(
+              {data.content.cities.map(
                 (
                   city: { name: string; image?: string; description?: string },
                   index: number
@@ -327,7 +335,7 @@ export default function ServicePage() {
           )}
 
           {/* Text with Video Layout for Nightlife */}
-          {data.type === "text-with-video" && data.content && (
+          {data.type === "text-with-standard-video" && data.content && (
             <div className="max-w-4xl mx-auto text-center">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -347,11 +355,21 @@ export default function ServicePage() {
                   {data.content.text}
                 </p>
                 <div className="flex justify-center mb-8">
-                  <img
-                    src={data.content.image || "/placeholder.svg"}
-                    alt={data.title}
-                    className="w-full max-w-2xl h-auto rounded-lg shadow-2xl"
-                  />
+                  {data.content.video ? (
+                    <video
+                      className="w-full max-w-2xl h-auto rounded-lg shadow-2xl"
+                      src={data.content.video}
+                      autoPlay
+                      muted
+                      loop
+                    />
+                  ) : (
+                    <img
+                      src={data.content.image || "/placeholder.svg"}
+                      alt={data.title}
+                      className="w-full max-w-2xl h-auto rounded-lg shadow-2xl"
+                    />
+                  )}
                 </div>
                 <Button
                   className="bg-yellow-500 text-black hover:bg-yellow-400 hover:text-black transition-all duration-300 px-8 py-3 text-sm sm:text-base tracking-wide"
@@ -420,15 +438,23 @@ export default function ServicePage() {
                           className="group cursor-pointer"
                         >
                           <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                            <img
-                              src={image.src || "/placeholder.svg"}
-                              alt={image.alt || data.title}
-                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                            />
-
+                            {image.src.endsWith(".mp4") ? (
+                              <video
+                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                src={image.src}
+                                autoPlay
+                                muted
+                                loop
+                              />
+                            ) : (
+                              <img
+                                src={image.src || "/placeholder.svg"}
+                                alt={image.alt || "Service Image"}
+                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                              />
+                            )}
                             {/* Overlay on hover */}
                             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
                             {/* Caption overlay */}
                             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 sm:p-6">
                               <motion.p
@@ -463,7 +489,132 @@ export default function ServicePage() {
           )}
 
           {/* Images with Custom Video Layout for Desert Safari */}
-          {data.type === "images-with-custom-video" && data.content && (
+          {data.type === "images-with-custom-video" &&
+            data.content &&
+            (data.feature === "slider" ? (
+              <div className="max-w-6xl mx-auto">
+                <ImageSlider
+                  data={data as any}
+                  themeClasses={themeClasses}
+                  getWhatsappUrlForService={getWhatsappUrlForService}
+                />
+              </div>
+            ) : (
+              <div className="max-w-6xl mx-auto">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+                  className="text-center mb-12 sm:mb-16"
+                >
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl section-heading mb-4">
+                    {data.content.title}
+                  </h2>
+                  <h3 className="text-xl sm:text-2xl luxury-heading mb-8">
+                    {data.content.subtitle}
+                  </h3>
+                  <p
+                    className={`text-base sm:text-lg ${themeClasses.textSecondary} leading-relaxed mb-12 max-w-4xl mx-auto`}
+                  >
+                    {data.content.text}
+                  </p>
+                </motion.div>
+                {/* Image Grid */}
+                {data.content.images && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    viewport={{ once: true }}
+                    className="mb-12 flex justify-center"
+                  >
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                      {data.content.images.map((image: any, index: number) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, y: 30 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.6, delay: index * 0.1 }}
+                          viewport={{ once: true }}
+                          className="group cursor-pointer"
+                        >
+                          <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-center">
+                            {image.src.endsWith(".mp4") ? (
+                              <video
+                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                src={image.src}
+                                autoPlay
+                                muted
+                                loop
+                              />
+                            ) : (
+                              <img
+                                src={image.src || "/placeholder.svg"}
+                                alt={image.alt || "Service Image"}
+                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                              />
+                            )}
+
+                            {/* Overlay on hover */}
+                            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            {/* Caption overlay */}
+                            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 sm:p-6">
+                              <motion.p
+                                className="text-white text-sm sm:text-base font-medium text-center transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300"
+                                initial={{ opacity: 0.8 }}
+                                whileHover={{ opacity: 1 }}
+                              >
+                                {image.caption}
+                              </motion.p>
+                            </div>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+                {/* Action Buttons */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  viewport={{ once: true }}
+                  className="text-center"
+                >
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Button
+                      className="bg-yellow-500 text-black hover:bg-yellow-400 hover:text-black transition-all duration-300 px-8 py-3 text-sm sm:text-base tracking-wide"
+                      asChild
+                    >
+                      <a
+                        href={getWhatsappUrlForService(data.title)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        BOOK NOW
+                      </a>
+                    </Button>
+                    <Button
+                      variant="outline"
+                      className={`${themeClasses.buttonOutline} transition-all duration-300 bg-transparent px-8 py-3 text-sm sm:text-base tracking-wide`}
+                      asChild
+                    >
+                      <a
+                        href={getWhatsappUrlForService(data.title)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        LEARN MORE
+                      </a>
+                    </Button>
+                  </div>
+                </motion.div>
+              </div>
+            ))}
+
+          {/* Images with Custom Video Layout for Desert Safari */}
+          {data.type === "image-with-custom-video" && data.content && (
             <div className="max-w-6xl mx-auto">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -485,17 +636,26 @@ export default function ServicePage() {
                 </p>
               </motion.div>
 
-              {/* Image Grid */}
-              {data.content.images && (
+              {typeof data.content.image === "string" ? (
+                // Single image layout
+                <div className="flex justify-center mb-8">
+                  <img
+                    src={data.content.image || "/placeholder.svg"}
+                    alt={data.title}
+                    className="w-full max-w-2xl h-auto rounded-lg shadow-2xl"
+                  />
+                </div>
+              ) : Array.isArray(data.content.image) ? (
+                // Multiple images grid layout
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                   viewport={{ once: true }}
-                  className="mb-12 flex justify-center"
+                  className="mb-8"
                 >
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                    {data.content.images.map((image: any, index: number) => (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                    {data.content.image.map((image: any, index: number) => (
                       <motion.div
                         key={index}
                         initial={{ opacity: 0, y: 30 }}
@@ -504,16 +664,24 @@ export default function ServicePage() {
                         viewport={{ once: true }}
                         className="group cursor-pointer"
                       >
-                        <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-center">
-                          <img
-                            src={image.src || "/placeholder.svg"}
-                            alt={image.alt || "Desert Safari Activity"}
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                          />
-
+                        <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                          {image.src.endsWith(".mp4") ? (
+                            <video
+                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                              src={image.src}
+                              autoPlay
+                              muted
+                              loop
+                            />
+                          ) : (
+                            <img
+                              src={image.src || "/placeholder.svg"}
+                              alt={image.alt || "Service Image"}
+                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            />
+                          )}
                           {/* Overlay on hover */}
                           <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
                           {/* Caption overlay */}
                           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 sm:p-6">
                             <motion.p
@@ -529,7 +697,7 @@ export default function ServicePage() {
                     ))}
                   </div>
                 </motion.div>
-              )}
+              ) : null}
 
               {/* Action Buttons */}
               <motion.div
@@ -549,7 +717,7 @@ export default function ServicePage() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      BOOK YOUR SAFARI
+                      BOOK NOW
                     </a>
                   </Button>
                   <Button
@@ -709,163 +877,7 @@ export default function ServicePage() {
         </div>
       </section>
 
-      {/* Instagram Section */}
-      <section className="py-12 sm:py-24 px-4 sm:px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="space-y-6 sm:space-y-8"
-          >
-            {/* Instagram Icon and Handle */}
-            <div className="flex items-center justify-center space-x-3 sm:space-x-4 mb-6 sm:mb-8">
-              <div
-                className={`p-2 sm:p-3 rounded-full border-2 ${themeClasses.border}`}
-              >
-                <Instagram className="w-6 h-6 sm:w-8 sm:h-8" />
-              </div>
-              <span
-                className={`text-base sm:text-lg tracking-wide ${themeClasses.textMuted} font-light`}
-              >
-                @SERVANACIRCLE
-              </span>
-            </div>
-
-            {/* Main Heading */}
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl luxury-heading mb-6 sm:mb-8 tracking-wide px-4">
-              follow our instagram
-            </h2>
-
-            {/* Description */}
-            <p
-              className={`text-base sm:text-lg ${themeClasses.textSecondary} leading-relaxed mb-8 sm:mb-12 max-w-2xl mx-auto px-4`}
-            >
-              For daily Dubai updates and to see our latest exclusive
-              experiences, follow us{" "}
-              <span className="font-medium">@servanacircle</span>
-            </p>
-
-            {/* Instagram Button */}
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                variant="outline"
-                size="lg"
-                className={`${themeClasses.buttonOutline} transition-all duration-300 px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base tracking-wide bg-transparent`}
-                asChild
-              >
-                <a
-                  href="https://instagram.com/servana_circle"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2"
-                >
-                  <Instagram className="w-4 h-4 sm:w-5 sm:h-5" />
-                  <span>SEE MORE ON INSTAGRAM</span>
-                </a>
-              </Button>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Concierge Section */}
-      <section
-        className={`py-12 sm:py-24 px-4 sm:px-6 ${themeClasses.sectionBg}`}
-      >
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div className="text-3xl sm:text-4xl mb-6 sm:mb-8">🧭</div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl luxury-heading mb-6 sm:mb-8 px-4">
-              Servana Concierge
-            </h2>
-            <p
-              className={`text-base sm:text-lg lg:text-xl ${themeClasses.textSecondary} leading-relaxed mb-8 sm:mb-12 px-4`}
-            >
-              At the core of it all , a personal concierge ready around the
-              clock. One message, and it's done: bookings, transport, upgrades,
-              surprises, and beyond.
-            </p>
-            <p className="text-lg sm:text-xl lg:text-2xl font-light italic px-4">
-              Luxury isn't what we offer. It's how we think.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer
-        className={`py-12 sm:py-16 px-4 sm:px-6 border-t ${themeClasses.border}`}
-      >
-        <div className="max-w-7xl mx-auto">
-          {/* Mobile: Centered layout, Desktop: Grid layout */}
-          <div className="text-center sm:text-left">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-              <div className="col-span-1 sm:col-span-2 flex flex-col items-center sm:items-start">
-                <div className="w-36 sm:w-48 mb-4">
-                  <Logo darkmode={isDarkTheme} />
-                </div>
-                <p
-                  className={`${themeClasses.textMuted} leading-relaxed text-sm sm:text-base max-w-md`}
-                >
-                  Unlock the Circle. Live the Privilege. Experience Dubai like
-                  never before.
-                </p>
-              </div>
-              <div className="flex flex-col items-center sm:items-start">
-                <h4 className="text-sm sm:text-base tracking-wide mb-3 sm:mb-4">
-                  SERVICES
-                </h4>
-                <div
-                  className={`space-y-2 text-xs sm:text-sm ${themeClasses.textMuted} text-center sm:text-left`}
-                >
-                  <div>Luxury Dining</div>
-                  <div>Yacht Charters</div>
-                  <div>Nightlife Access</div>
-                  <div>Beach Clubs</div>
-                </div>
-              </div>
-              <div className="flex flex-col items-center sm:items-start">
-                <h4 className="text-sm sm:text-base tracking-wide mb-3 sm:mb-4">
-                  CONTACT
-                </h4>
-                <div
-                  className={`space-y-2 text-xs sm:text-sm ${themeClasses.textMuted} text-center sm:text-left`}
-                >
-                  <div>Dubai, UAE</div>
-                  <div>+971 50 243 8793</div>
-                  <div>concierge@servanacircle.com</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            className={`border-t ${themeClasses.border} mt-8 sm:mt-12 pt-6 sm:pt-8 text-center text-xs sm:text-sm ${themeClasses.textMuted}`}
-          >
-            {new Date().getFullYear()} Servana Circle. <br />
-            <small>
-              Site made by the{" "}
-              <a
-                className="underline"
-                target="_blank"
-                href="https://www.codiha.com"
-              >
-                CODIHA
-              </a>
-              &trade; Agency.
-            </small>
-          </div>
-        </div>
-      </footer>
-
-      {/* WhatsApp Button */}
-      <WhatsAppButton />
+      <Footer />
     </div>
   );
 }

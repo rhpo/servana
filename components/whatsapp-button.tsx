@@ -1,13 +1,16 @@
 "use client";
 
-import { MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function WhatsAppButton() {
   const [showTooltip, setShowTooltip] = useState(false);
   const whatsappNumber = "+971502438793";
-  const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber.replace(/[^0-9]/g, "")}&text=Hello Servana Circle, I would like to speak to your concierge team.`;
+  const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber.replace(
+    /[^0-9]/g,
+    ""
+  )}&text=Hello Servana Circle, I would like to speak to your concierge team.`;
 
   return (
     <motion.div
@@ -20,13 +23,13 @@ export default function WhatsAppButton() {
         {/* Tooltip */}
         {showTooltip && (
           <motion.div
-            initial={{ opacity: 0, x: -10 }}
+            initial={{ opacity: 0, x: 10 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -10 }}
-            className="absolute left-16 bottom-2 bg-black text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap shadow-lg"
+            exit={{ opacity: 0, x: 10 }}
+            className="absolute right-16 bottom-2 bg-black text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap shadow-lg"
           >
             Speak to Concierge
-            <div className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-1 w-2 h-2 bg-black rotate-45"></div>
+            <div className="absolute right-full top-1/2 transform -translate-y-1/2 translate-x-1 w-2 h-2 bg-black rotate-45"></div>
           </motion.div>
         )}
 
@@ -41,7 +44,7 @@ export default function WhatsAppButton() {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
-          <MessageCircle className="w-6 h-6" />
+          <FaWhatsapp className="w-6 h-6" />
         </motion.a>
       </div>
     </motion.div>

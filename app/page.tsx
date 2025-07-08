@@ -18,6 +18,7 @@ import WhatsAppButton from "@/components/whatsapp-button";
 import { useTheme } from "@/components/theme-provider";
 import { HeroVideo } from "@/components/HeroVideo";
 import { services } from "@/lib/data";
+import Footer from "@/components/footer";
 
 export default function HomePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -261,9 +262,9 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg sm:text-xl md:text-2xl font-light text-white mb-12 max-w-2xl mx-auto leading-relaxed"
+            className="text-2xl sm:text-xl md:text-3xl font-light text-white mb-12 max-w-2xl mx-auto leading-relaxed"
           >
-            Unlock the Circle. Step into Dubai Elite with Servana.
+            Step into Dubai Elite with Servana.
           </motion.p>
 
           <motion.div
@@ -422,148 +423,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Concierge Section */}
-      <section className={`py-24 px-6 ${themeClasses.sectionBg}`}>
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div className="text-4xl mb-8">🧭</div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl luxury-heading mb-8">
-              Servana Concierge
-            </h2>
-            <p
-              className={`text-lg sm:text-xl ${themeClasses.textSecondary} leading-relaxed mb-12`}
-            >
-              At the core of it all , a personal concierge ready around the
-              clock. One message, and it's done: bookings, transport, upgrades,
-              surprises, and beyond.
-            </p>
-            <p className="text-xl sm:text-2xl font-light italic">
-              Luxury isn't what we offer. It's how we think.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Instagram Section */}
-      <section className="py-24 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            {/* Instagram Icon and Handle */}
-            <div className="flex items-center justify-center space-x-4 mb-8">
-              <div
-                className={`p-3 rounded-full border-2 ${themeClasses.border}`}
-              >
-                <Instagram className={`w-8 h-8 ${themeClasses.text}`} />
-              </div>
-              <span
-                className={`text-lg tracking-wide ${themeClasses.textMuted} font-light`}
-              >
-                @SERVANACIRCLE
-              </span>
-            </div>
-
-            {/* Main Heading */}
-            <h2 className="text-3xl sm:text-4xl md:text-5xl luxury-heading mb-8 tracking-wide">
-              follow our instagram
-            </h2>
-
-            {/* Description */}
-            <p
-              className={`text-lg ${themeClasses.textSecondary} leading-relaxed mb-12 max-w-2xl mx-auto`}
-            >
-              For daily Dubai updates and to see our latest exclusive
-              experiences, follow us{" "}
-              <span className={`font-medium ${themeClasses.text}`}>
-                @servanacircle
-              </span>
-            </p>
-
-            {/* Instagram Button */}
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                variant="outline"
-                size="lg"
-                className={`${themeClasses.buttonOutline} transition-all duration-300 px-8 py-3 text-sm tracking-wide`}
-                asChild
-              >
-                <a
-                  href="https://instagram.com/servana_circle"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2"
-                >
-                  <Instagram className="w-5 h-5" />
-                  <span>SEE MORE ON INSTAGRAM</span>
-                </a>
-              </Button>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className={`py-16 px-6 border-t ${themeClasses.border}`}>
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="col-span-1 sm:col-span-2">
-              <div className="w-48 mb-4">
-                <Logo darkmode={isDarkTheme} />
-              </div>
-              <p className={`${themeClasses.textMuted} leading-relaxed`}>
-                Unlock the Circle. Live the Privilege. Experience Dubai like
-                never before.
-              </p>
-            </div>
-            <div>
-              <h4 className="text-sm tracking-wide mb-4">SERVICES</h4>
-              <div className={`space-y-2 text-sm ${themeClasses.textMuted}`}>
-                <div>Luxury Dining</div>
-                <div>Yacht Charters</div>
-                <div>Nightlife Access</div>
-                <div>Beach Clubs</div>
-              </div>
-            </div>
-            <div>
-              <h4 className="text-sm tracking-wide mb-4">CONTACT</h4>
-              <div className={`space-y-2 text-sm ${themeClasses.textMuted}`}>
-                <div>Dubai, UAE</div>
-                <div>+971 50 243 8793</div>
-                <div>concierge@servanacircle.com</div>
-              </div>
-            </div>
-          </div>
-          <div
-            className={`border-t ${themeClasses.border} mt-12 pt-8 text-center text-sm ${themeClasses.textMuted}`}
-          >
-            {new Date().getFullYear()} Servana Circle. <br />
-            <small>
-              Site made by the{" "}
-              <a
-                className="underline"
-                target="_blank"
-                href="https://www.codiha.com"
-              >
-                CODIHA
-              </a>
-              &trade; Agency.
-            </small>
-          </div>
-        </div>
-      </footer>
-
-      {/* WhatsApp Button */}
-      <WhatsAppButton />
+      <Footer />
     </motion.div>
   );
 }
