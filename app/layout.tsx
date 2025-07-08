@@ -36,6 +36,9 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * Renders the root layout of the application with necessary components and providers.
+ */
 export default function RootLayout({
   children,
 }: {
