@@ -21,7 +21,8 @@ export default function Video(props: VideoProps) {
   //   m3u8Src = props.src;
   // }
 
-  let realSrc = props.src.replace(".", "-compressed.");
+  // let realSrc = props.src.replace(".", "-compressed.");
+  let realSrc = props.src;
 
   return (
     <video
