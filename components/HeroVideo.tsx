@@ -6,6 +6,16 @@ interface HeroVideoProps {
   thumbnail?: string | string[];
 }
 
+/**
+ * Renders a video component with optional thumbnails and multiple sources.
+ *
+ * This function sets up a video player that can handle multiple video sources and thumbnails.
+ * It uses IntersectionObserver to determine when the video is in view and attempts to play it.
+ * If playback fails, it sets up event listeners for user gestures to trigger playback.
+ *
+ * @param src - A single string or array of strings representing video source URLs.
+ * @param thumbnail - A single string or array of strings representing thumbnail image URLs.
+ */
 export function HeroVideo({
   src = "/videos/hero.mp4",
   thumbnail = "/videos/hero.png",

@@ -5,6 +5,11 @@ interface LogoProps {
   className?: string;
 }
 
+/**
+ * Renders an SVG component representing a complex geometric design with multiple colored paths and transformations.
+ *
+ * @returns {JSX.Element} - The SVG component to be rendered in a React application.
+ */
 export default function Logo(props: LogoProps) {
   var color = props.darkmode ? "#FFC300" : "#000000";
 
