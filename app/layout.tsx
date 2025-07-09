@@ -5,8 +5,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider, useTheme } from "@/components/theme-provider";
 import DiscountModal from "@/components/discount-modal";
-import Logo from "@/lib/Logo";
-import WhatsAppButton from "@/components/whatsapp-button";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [
       {
-        url: "https://servanacircle.netlify.app/images/banner.jpg",
+        url: "./images/banner.jpg",
         width: 1200,
         height: 630,
         alt: "Servana Circle - Unlock the Circle. Live the Privilege.",

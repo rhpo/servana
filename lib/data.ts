@@ -61,7 +61,7 @@ export const serviceData = {
         "/videos/hero/yacht/2.mp4",
       ],
 
-      videoThumbnail: "/images/yacht.png",
+      videoThumbnail: "/images/boat.png",
 
       images: [
         

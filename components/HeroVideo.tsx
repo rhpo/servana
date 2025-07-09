@@ -87,7 +87,10 @@ export function HeroVideo({
   }, [hasPlayed, sources.length]);
 
   return (
-    <div ref={containerRef} className="absolute inset-0 w-full h-full">
+    <div
+      ref={containerRef}
+      className="absolute inset-0 w-full h-full pt-[var(--navbar-height-mobile)] md:pt-0"
+    >
       {!hasPlayed && (
         <>
           <div
@@ -96,15 +99,20 @@ export function HeroVideo({
             }`}
           />
           <div className="absolute inset-0 z-10 flex flex-col md:flex-row">
-            {sources.map((_, index) => (
-              <div key={`thumbnail-${index}`} className="flex-1 relative">
-                <img
-                  src={thumbnails[index] || thumbnails[0]}
-                  alt={`Video Thumbnail ${index + 1}`}
-                  className="absolute inset-0 w-full h-full object-cover opacity-100"
-                />
+            <div key={`thumbnail`} className="flex-1 relative">
+              {/* show loading spinner in the center */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-16 h-16 border-4 border-gray-300 rounded-full animate-spin">
+                  <div className="w-full h-full bg-black rounded-full">
+                    <img
+                      src={thumbnails[0]}
+                      alt="Loading"
+                      className="w-full h-full object-cover rounded-full"
+                    />
+                  </div>
+                </div>
               </div>
-            ))}
+            </div>
           </div>
         </>
       )}
@@ -124,6 +132,7 @@ export function HeroVideo({
             preload="auto"
             disablePictureInPicture
             disableRemotePlayback
+            webkit-playsinline="true"
           >
             <source src={source + ""} type="video/mp4" />
           </video>

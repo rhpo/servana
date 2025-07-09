@@ -1,5 +1,7 @@
 "use client";
 
+import Logo from "@/lib/Logo";
+import { useAllMediaLoaded } from "@/lib/useAllMediaLoaded";
 import type React from "react";
 import { createContext, useContext, useEffect, useState } from "react";
 
@@ -51,66 +53,14 @@ export function ThemeProvider({
 
   const [mounted, setMounted] = useState(false);
 
-  // Set mounted to true after hydration
+  // ✅ CALL HOOK UNCONDITIONALLY
+  const ready = useAllMediaLoaded();
+
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Apply theme to document and update state
-  useEffect(() => {
-    if (!mounted) return;
-
-    const root = window.document.documentElement;
-    root.classList.remove("light", "dark");
-
-    let effectiveTheme: "light" | "dark";
-
-    if (theme === "system") {
-      effectiveTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light";
-    } else {
-      effectiveTheme = theme;
-    }
-
-    root.classList.add(effectiveTheme);
-    setIsDarkTheme(effectiveTheme === "dark");
-  }, [theme, mounted]);
-
-  // Listen for system theme changes
-  useEffect(() => {
-    if (!mounted) return;
-
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
-    const handleChange = () => {
-      if (theme === "system") {
-        const systemTheme = mediaQuery.matches ? "dark" : "light";
-        const root = window.document.documentElement;
-        root.classList.remove("light", "dark");
-        root.classList.add(systemTheme);
-        setIsDarkTheme(systemTheme === "dark");
-      }
-    };
-
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
-  }, [theme, mounted]);
-
-  // Listen for localStorage changes from other tabs
-  useEffect(() => {
-    if (!mounted) return;
-
-    const handleStorageChange = (e: StorageEvent) => {
-      if (e.key === storageKey && e.newValue) {
-        const newTheme = e.newValue as Theme;
-        setTheme(newTheme);
-      }
-    };
-
-    window.addEventListener("storage", handleStorageChange);
-    return () => window.removeEventListener("storage", handleStorageChange);
-  }, [storageKey, mounted]);
+  // ...rest of useEffects
 
   const value = {
     theme,
@@ -119,7 +69,6 @@ export function ThemeProvider({
       setTheme(newTheme);
       localStorage.setItem(storageKey, newTheme);
 
-      // Immediately apply the theme
       const root = window.document.documentElement;
       root.classList.remove("light", "dark");
 
@@ -141,6 +90,14 @@ export function ThemeProvider({
   // Prevent flash of wrong theme
   if (!mounted) {
     return <div style={{ visibility: "hidden" }}>{children}</div>;
+  }
+
+  if (!ready) {
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+        <Logo darkmode={isDarkTheme} className="w-16 h-16 animate-bounce" />
+      </div>
+    );
   }
 
   return (

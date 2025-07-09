@@ -2,6 +2,7 @@ import React from "react";
 
 interface LogoProps {
   darkmode: boolean;
+  className?: string;
 }
 
 export default function Logo(props: LogoProps) {
@@ -14,6 +15,7 @@ export default function Logo(props: LogoProps) {
       width="100%"
       height="100%"
       preserveAspectRatio="xMidYMid meet"
+      className={props.className}
     >
       <defs>
         <linearGradient

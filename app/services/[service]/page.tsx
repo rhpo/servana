@@ -362,6 +362,8 @@ export default function ServicePage() {
                       autoPlay
                       muted
                       loop
+                      playsInline
+                      webkit-playsinline="true"
                     />
                   ) : (
                     <img
@@ -445,6 +447,8 @@ export default function ServicePage() {
                                 autoPlay
                                 muted
                                 loop
+                                playsInline
+                                webkit-playsinline="true"
                               />
                             ) : (
                               <img
@@ -544,9 +548,11 @@ export default function ServicePage() {
                               <video
                                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                 src={image.src}
-                                autoPlay
                                 muted
                                 loop
+                                playsInline
+                                webkit-playsinline="true"
+                                autoPlay
                               />
                             ) : (
                               <img
@@ -672,6 +678,8 @@ export default function ServicePage() {
                               autoPlay
                               muted
                               loop
+                              playsInline
+                              webkit-playsinline="true"
                             />
                           ) : (
                             <img
