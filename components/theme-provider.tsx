@@ -27,6 +27,18 @@ const initialState: ThemeProviderState = {
 
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
+/**
+ * Provides a theme context to its children components, managing the theme state and persistence in local storage.
+ *
+ * It initializes the theme from local storage or defaults to "system". It also determines if the current theme is dark.
+ * The component prevents a flash of incorrect theme by hiding itself until it is fully mounted. It provides methods to
+ * set the theme, update the document's class list based on the theme, and syncs with the system's preferred color scheme.
+ *
+ * @param children - React components that will receive the theme context.
+ * @param defaultTheme - The default theme to use if none is stored in local storage. Defaults to "system".
+ * @param storageKey - The key under which the theme is stored in local storage. Defaults to "servana-ui-theme".
+ * @returns A React component providing the theme context to its children.
+ */
 export function ThemeProvider({
   children,
   defaultTheme = "system",
