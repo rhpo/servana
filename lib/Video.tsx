@@ -21,6 +21,8 @@ export default function Video(props: VideoProps) {
   //   m3u8Src = props.src;
   // }
 
+  let realSrc = props.src.replace(".", "-compressed.");
+
   return (
     <video
       className={props.className}
@@ -36,7 +38,7 @@ export default function Video(props: VideoProps) {
       key={props.passKey}
     >
       {/* <source src={m3u8Src} type="application/x-mpegURL" /> */}
-      <source src={props.src} type={props.type || "video/webm"} />
+      <source src={realSrc} type={props.type || "video/webm"} />
     </video>
   );
 }
