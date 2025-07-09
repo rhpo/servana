@@ -14,6 +14,7 @@ import { HeroVideo } from "@/components/HeroVideo";
 import { serviceData, services } from "@/lib/data";
 import Footer from "@/components/footer";
 import ImageSlider from "@/components/slider";
+import Video from "@/lib/Video";
 
 export default function ServicePage() {
   const { service } = useParams() as { service: string };
@@ -356,14 +357,9 @@ export default function ServicePage() {
                 </p>
                 <div className="flex justify-center mb-8">
                   {data.content.video ? (
-                    <video
+                    <Video
                       className="w-full max-w-2xl h-auto rounded-lg shadow-2xl"
                       src={data.content.video}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      webkit-playsinline="true"
                     />
                   ) : (
                     <img
@@ -440,15 +436,10 @@ export default function ServicePage() {
                           className="group cursor-pointer"
                         >
                           <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                            {image.src.endsWith(".mp4") ? (
-                              <video
+                            {image.src.endsWith(".webm") ? (
+                              <Video
                                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                 src={image.src}
-                                autoPlay
-                                muted
-                                loop
-                                playsInline
-                                webkit-playsinline="true"
                               />
                             ) : (
                               <img
@@ -544,15 +535,10 @@ export default function ServicePage() {
                           className="group cursor-pointer"
                         >
                           <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-center">
-                            {image.src.endsWith(".mp4") ? (
-                              <video
+                            {image.src.endsWith(".webm") ? (
+                              <Video
                                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                 src={image.src}
-                                muted
-                                loop
-                                playsInline
-                                webkit-playsinline="true"
-                                autoPlay
                               />
                             ) : (
                               <img
@@ -671,15 +657,10 @@ export default function ServicePage() {
                         className="group cursor-pointer"
                       >
                         <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                          {image.src.endsWith(".mp4") ? (
-                            <video
+                          {image.src.endsWith(".webm") ? (
+                            <Video
                               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                               src={image.src}
-                              autoPlay
-                              muted
-                              loop
-                              playsInline
-                              webkit-playsinline="true"
                             />
                           ) : (
                             <img

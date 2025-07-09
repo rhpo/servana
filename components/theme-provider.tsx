@@ -92,13 +92,13 @@ export function ThemeProvider({
     return <div style={{ visibility: "hidden" }}>{children}</div>;
   }
 
-  if (!ready) {
-    return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-        <Logo darkmode={isDarkTheme} className="w-16 h-16 animate-bounce" />
-      </div>
-    );
-  }
+  // if (!ready) {
+  //   return (
+  //     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+  //       <Logo darkmode={isDarkTheme} className="w-16 h-16 animate-bounce" />
+  //     </div>
+  //   );
+  // }
 
   return (
     <ThemeProviderContext.Provider {...props} value={value}>

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useTheme } from "@/components/theme-provider";
+import Video from "@/lib/Video";
 
 interface HeroVideoProps {
   src?: string | string[];
@@ -7,7 +8,7 @@ interface HeroVideoProps {
 }
 
 export function HeroVideo({
-  src = "/videos/hero.mp4",
+  src = "/videos/hero.webm",
   thumbnail = "/videos/hero.png",
 }: HeroVideoProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -119,23 +120,14 @@ export function HeroVideo({
 
       <div className="absolute inset-0 z-0 flex flex-col md:flex-row">
         {sources.map((source, index) => (
-          <video
+          <Video
             key={`video-${index}`}
             ref={(el) => {
               videoRefs.current[index] = el;
             }}
             className="flex-1 min-w-0 min-h-0 w-full h-full object-cover transition-opacity duration-500 opacity-100"
-            playsInline
-            autoPlay
-            muted
-            loop
-            preload="auto"
-            disablePictureInPicture
-            disableRemotePlayback
-            webkit-playsinline="true"
-          >
-            <source src={source + ""} type="video/mp4" />
-          </video>
+            src={source}
+          ></Video>
         ))}
       </div>
     </div>

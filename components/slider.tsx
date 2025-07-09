@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
+import Video from "@/lib/Video";
 
 type ImageSliderProps = {
   data: any;
@@ -74,13 +75,10 @@ const ImageSlider = ({
           >
             {images.map((image: any, index: number) => (
               <div key={index} className="w-full flex-shrink-0 relative">
-                {image.src?.endsWith(".mp4") ? (
-                  <video
+                {image.src?.endsWith(".webm") ? (
+                  <Video
                     className="w-full h-full object-cover"
                     src={image.src}
-                    autoPlay
-                    muted
-                    loop
                   />
                 ) : (
                   <img
@@ -140,12 +138,8 @@ const ImageSlider = ({
                   : "border-transparent hover:border-gray-300"
               }`}
             >
-              {image.src?.endsWith(".mp4") ? (
-                <video
-                  className="w-full h-full object-cover"
-                  src={image.src}
-                  muted
-                />
+              {image.src?.endsWith(".webm") ? (
+                <Video className="w-full h-full object-cover" src={image.src} />
               ) : (
                 <img
                   src={image.src || "/placeholder.svg"}
@@ -240,13 +234,10 @@ const ImageGalleryComponent = ({
             {data.content.images.map((image: any, index: number) => (
               <div key={index} className="group cursor-pointer">
                 <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-center">
-                  {image.src?.endsWith(".mp4") ? (
-                    <video
+                  {image.src?.endsWith(".webm") ? (
+                    <Video
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       src={image.src}
-                      autoPlay
-                      muted
-                      loop
                     />
                   ) : (
                     <img
