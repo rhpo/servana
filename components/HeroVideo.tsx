@@ -18,7 +18,11 @@ export function HeroVideo({
   const { isDarkTheme } = useTheme();
 
   // Normalize src and thumbnail to arrays
-  const sources = Array.isArray(src) ? src : [src];
+  let sources = Array.isArray(src) ? src : [src];
+
+  // sources will be choose random 2 videos of sources
+  sources = sources.sort(() => 0.5 - Math.random()).slice(0, 2);
+
   const thumbnails = Array.isArray(thumbnail) ? thumbnail : [thumbnail];
 
   useEffect(() => {
