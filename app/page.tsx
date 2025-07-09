@@ -14,7 +14,6 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Logo from "@/lib/Logo";
-import WhatsAppButton from "@/components/whatsapp-button";
 import { useTheme } from "@/components/theme-provider";
 import { HeroVideo } from "@/components/HeroVideo";
 import { services } from "@/lib/data";

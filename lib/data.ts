@@ -16,7 +16,7 @@ export const serviceData = {
         "/videos/hero/dinner/1.webm",
         "/videos/hero/dinner/3.webm",
       ],
-      videoThumbnail: "/images/dining.png",
+      videoThumbnail: "/images/dinner/1.jpeg",
       cities: [
       {
         name: "DUBAI MARINA",
@@ -102,7 +102,7 @@ export const serviceData = {
       video: [
         "/videos/hero/night/2.webm",
         "/videos/hero/night/1.webm",
-        "/videos/hero/night/3.webm?",
+        "/videos/hero/night/3.webm",
       ],
 
       videoThumbnail: "/images/night.png",
@@ -209,12 +209,12 @@ export const serviceData = {
           caption: "Thrilling Quad Biking",
         },
         {
-          src: "/images/safari/barbecue.webm",
+          src: "/images/safari/barbecue.png",
           alt: "Barbecue Dinner",
           caption: "Desert Barbecue Dinner",
         },
         {
-          src: "/images/safari/dune.webm", 
+          src: "/images/safari/dune.png", 
           alt: "Dune Bashing",
           caption: "Exciting Dune Bashing",
         },
@@ -382,7 +382,7 @@ export const serviceData = {
   },
   "private-jet": {
     title: "Private Jet",
-    background: "/videos/hero/plane/1.webm",
+    background: "/images/jet-hero.png",
     hero: "Take Off On Your Time",
     tagline: "We move as you move.",
     description:
@@ -403,7 +403,7 @@ export const serviceData = {
           "/videos/hero/plane/3.webm",
       ],
 
-      videoThumbnail: "/images/jet.png",
+      videoThumbnail: "/images/jet-hero.png",
     },
   },
   "vip-haircut": {

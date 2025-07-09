@@ -63,7 +63,7 @@ export function HeroVideo({
                 setHasPlayed(true);
               })
               .catch((e) => {
-                alert(`Error playing videos: ${e}`);
+                // alert(`Error playing videos: ${e}`);
               });
 
             window.removeEventListener("touchstart", onGesture);
