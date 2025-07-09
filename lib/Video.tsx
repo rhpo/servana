@@ -8,6 +8,9 @@ interface VideoProps {
   ref?: React.Ref<HTMLVideoElement>;
 }
 
+/**
+ * Renders a video element with specified properties and sources.
+ */
 export default function Video(props: VideoProps) {
   // given src which is webm, we try to look for the m3u8 equivant in the same folder, it's basically {name}/{name}.m3u8
   // example: src = "/videos/hero.webm" => m3u8Src = "/videos/hero/hero.m3u8"
