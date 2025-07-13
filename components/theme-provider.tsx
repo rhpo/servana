@@ -2,6 +2,7 @@
 
 import Logo from "@/lib/Logo";
 import { useAllMediaLoaded } from "@/lib/useAllMediaLoaded";
+import { usePathname } from "next/navigation";
 import type React from "react";
 import { createContext, useContext, useEffect, useState } from "react";
 
@@ -33,6 +34,8 @@ export function ThemeProvider({
   storageKey = "servana-ui-theme",
   ...props
 }: ThemeProviderProps) {
+  const pathname = usePathname(); // triggers change when route changes
+
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window !== "undefined") {
       const stored = localStorage.getItem(storageKey) as Theme;
@@ -52,17 +55,24 @@ export function ThemeProvider({
   });
 
   const [mounted, setMounted] = useState(false);
-
-  // ✅ CALL HOOK UNCONDITIONALLY
+  const [isNavigating, setIsNavigating] = useState(false);
   const ready = useAllMediaLoaded();
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // ...rest of useEffects
+  // Detect page transitions by watching pathname changes
+  useEffect(() => {
+    setIsNavigating(true);
+    const timeout = setTimeout(() => {
+      setIsNavigating(false);
+    }, 300); // short delay to show loader (optional)
 
-  const value = {
+    return () => clearTimeout(timeout);
+  }, [pathname]);
+
+  const value: ThemeProviderState = {
     theme,
     isDarkTheme,
     setTheme: (newTheme: Theme) => {
@@ -87,21 +97,16 @@ export function ThemeProvider({
     },
   };
 
-  // Prevent flash of wrong theme
-  if (!mounted) {
-    return <div style={{ visibility: "hidden" }}>{children}</div>;
+  if (!mounted || isNavigating || !ready) {
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/100 backdrop-blur-sm">
+        <Logo darkmode={isDarkTheme} className="w-16 h-16 animate-bounce" />
+      </div>
+    );
   }
 
-  // if (!ready) {
-  //   return (
-  //     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-  //       <Logo darkmode={isDarkTheme} className="w-16 h-16 animate-bounce" />
-  //     </div>
-  //   );
-  // }
-
   return (
-    <ThemeProviderContext.Provider {...props} value={value}>
+    <ThemeProviderContext.Provider value={value} {...props}>
       {children}
     </ThemeProviderContext.Provider>
   );
@@ -109,9 +114,8 @@ export function ThemeProvider({
 
 export const useTheme = () => {
   const context = useContext(ThemeProviderContext);
-
-  if (context === undefined)
+  if (context === undefined) {
     throw new Error("useTheme must be used within a ThemeProvider");
-
+  }
   return context;
 };
