@@ -28,6 +28,18 @@ const initialState: ThemeProviderState = {
 
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
+/**
+ * Provides a theme context and manages theme state for an application.
+ *
+ * This component initializes the theme based on localStorage or default settings,
+ * and provides a context with functions to update the theme. It also handles
+ * page transitions by showing a loading spinner during navigation.
+ *
+ * @param children - The child components that will receive the theme context.
+ * @param defaultTheme - The default theme to use if no theme is stored in localStorage (default: "system").
+ * @param storageKey - The key used to store and retrieve the theme from localStorage (default: "servana-ui-theme").
+ * @returns A React provider component with the theme context.
+ */
 export function ThemeProvider({
   children,
   defaultTheme = "system",
@@ -112,6 +124,9 @@ export function ThemeProvider({
   );
 }
 
+/**
+ * Retrieves the theme context from a ThemeProvider.
+ */
 export const useTheme = () => {
   const context = useContext(ThemeProviderContext);
   if (context === undefined) {
