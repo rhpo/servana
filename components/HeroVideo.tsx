@@ -7,6 +7,16 @@ interface HeroVideoProps {
   thumbnail?: string | string[];
 }
 
+/**
+ * Render a hero video component with optional sources and thumbnail.
+ *
+ * This function manages video playback, handling intersection observer events,
+ * attempting to autoplay videos, and setting up gesture listeners if autoplay fails.
+ * It also handles theming by adjusting the background color based on the current theme.
+ *
+ * @param props - An object containing the source(s) of the video and the thumbnail.
+ * @returns A React component rendering a hero video with optional sources and thumbnails.
+ */
 export function HeroVideo({
   src = "/videos/hero.webm",
   thumbnail = "/videos/hero.png",
@@ -35,6 +45,9 @@ export function HeroVideo({
       video.muted = true;
     });
 
+    /**
+     * Attempts to play all videos and sets up gesture listeners if any video fails to play.
+     */
     const tryPlayAll = () => {
       const playPromises = videos.map((video) => {
         const playPromise = video.play();
@@ -57,6 +70,9 @@ export function HeroVideo({
         })
         .catch(() => {
           // If any video fails to play, set up gesture listeners
+          /**
+           * Plays all videos and sets hasPlayed to true, then removes gesture event listeners.
+           */
           const onGesture = () => {
             Promise.all(videos.map((video) => video.play()))
               .then(() => {
