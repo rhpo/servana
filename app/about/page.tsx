@@ -11,6 +11,17 @@ import { useTheme } from "@/components/theme-provider";
 import { HeroVideo } from "@/components/HeroVideo";
 import Footer from "@/components/footer";
 
+/**
+ * Renders the About Page component with dynamic theme support and navigation features.
+ *
+ * This function sets up the layout and content of the About Page, including a navigation bar,
+ * hero section, sections detailing what is offered, and a story section. It also includes
+ * functionality for toggling between dark and light themes and provides links to connect via WhatsApp.
+ *
+ * The component uses various hooks and motion components for animations and theme management.
+ *
+ * @returns The JSX representation of the About Page.
+ */
 export default function AboutPage() {
   const { theme, isDarkTheme, setTheme } = useTheme();
   const whatsappUrl = `https://api.whatsapp.com/send?phone=971502438793&text=Hi Servana Circle, I’m ready to unlock an exclusive Dubai experience. Please let me know what’s available.`;

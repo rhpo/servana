@@ -18,6 +18,16 @@ import { useTheme } from "@/components/theme-provider";
 import { HeroVideo } from "@/components/HeroVideo";
 import Footer from "@/components/footer";
 
+/**
+ * Renders a contact page with navigation, hero section, and contact information.
+ *
+ * The component uses the `useTheme` hook to manage theme state and dynamically apply styles based on whether the theme is dark or light.
+ * It constructs URLs for WhatsApp messages to pre-fill messages directed at Servana Circle's concierge team.
+ * The page includes a toggle button for switching between light and dark themes, which updates the UI accordingly.
+ * It also features a hero section with a video background and contact buttons that link to various communication channels (WhatsApp, Instagram, Email).
+ *
+ * @returns A React component representing the Contact Page.
+ */
 export default function ContactPage() {
   const { theme, isDarkTheme, setTheme } = useTheme();
   const whatsappNumber = "+971502438793";
