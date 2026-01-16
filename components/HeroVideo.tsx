@@ -7,6 +7,18 @@ interface HeroVideoProps {
   thumbnail?: string | string[];
 }
 
+/**
+ * Renders a hero video component with optional sources and thumbnails.
+ *
+ * This component manages multiple video sources, randomly selects two of them,
+ * and attempts to play them automatically when they come into view. If autoplay fails,
+ * it sets up gesture listeners to allow playback on user interaction. It also handles
+ * theme-based background styling and displays a loading spinner before the videos are ready.
+ *
+ * @param src - A string or array of video source URLs.
+ * @param thumbnail - A string or array of thumbnail image URLs.
+ * @returns A React component representing the hero video section.
+ */
 export function HeroVideo({
   src = "/videos/hero.webm",
   thumbnail = "/videos/hero.png",
