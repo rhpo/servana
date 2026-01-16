@@ -16,6 +16,21 @@ import Footer from "@/components/footer";
 import ImageSlider from "@/components/slider";
 import Video from "@/lib/Video";
 
+/**
+ * The `ServiceDetailsPage` component is a React functional component that renders details of a specific service.
+ *
+ * @component
+ * @param {Object} props - Component properties.
+ * @param {Object} props.service - Object containing details about the service.
+ * @param {string} props.service.id - Unique identifier for the service.
+ * @param {string} props.service.title - Title of the service.
+ * @param {string} props.service.type - Type or category of the service.
+ * @param {Array<Object>} props.service.features - List of features associated with the service.
+ * @param {Object} props.themeClasses - Object containing theme-specific class names for styling.
+ * @param {Array<Object>} props.featuredServices - Array of objects representing featured services to be displayed on the page.
+ *
+ * @returns {JSX.Element} React JSX element representing the `ServiceDetailsPage` component.
+ */
 export default function ServicePage() {
   const { service } = useParams() as { service: string };
   // const data = serviceData[service as keyof typeof serviceData];

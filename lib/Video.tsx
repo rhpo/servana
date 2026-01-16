@@ -8,6 +8,15 @@ interface VideoProps {
   ref?: React.Ref<HTMLVideoElement>;
 }
 
+/**
+ * Renders a video component with fallback support for HLS streams.
+ *
+ * This function constructs an HLS source URL from the given `src` prop and attempts to load it using the `<video>` element.
+ * If the constructed HLS URL is invalid, it falls back to the original `src`. The video is configured with various attributes
+ * such as `muted`, `loop`, and autoplay features. It also includes sources for both the HLS stream and the original video file.
+ *
+ * @param props - An object containing properties for the video component.
+ */
 export default function Video(props: VideoProps) {
   // given src which is webm, we try to look for the m3u8 equivant in the same folder, it's basically {name}/{name}.m3u8
   // example: src = "/videos/hero.webm" => m3u8Src = "/videos/hero/hero.m3u8"

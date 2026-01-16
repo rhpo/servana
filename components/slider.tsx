@@ -20,6 +20,19 @@ type ImageGalleryComponentProps = {
   getWhatsappUrlForService: (serviceTitle: string) => string;
 };
 
+/**
+ * A React component that renders an image slider with auto-play functionality and navigation controls.
+ *
+ * This component takes in data, theme classes, and a function to generate WhatsApp URLs for services.
+ * It manages the current index of the displayed slide and the auto-play state using useState hooks.
+ * The component renders images from the provided data, supports both static images and videos,
+ * and includes navigation buttons, play/pause controls, slide counters, thumbnail navigation, and dots indicators.
+ * Additionally, it provides action buttons to open WhatsApp URLs for booking services.
+ *
+ * @param data - An object containing content details such as title, subtitle, text, and images.
+ * @param themeClasses - An object containing CSS classes for theming purposes.
+ * @param getWhatsappUrlForService - A function that generates a WhatsApp URL based on the service title.
+ */
 const ImageSlider = ({
   data,
   themeClasses,
@@ -192,6 +205,13 @@ const ImageSlider = ({
 };
 
 // Example usage with your existing component structure
+/**
+ * Renders an image gallery component based on the provided data and theme classes.
+ *
+ * This function checks if the slider feature is enabled in the data, and if so, it renders an ImageSlider component.
+ * Otherwise, it renders a grid layout for images, which may include custom videos. The grid displays each image with
+ * hover effects, captions, and action buttons to book or learn more about the service using WhatsApp.
+ */
 const ImageGalleryComponent = ({
   data,
   themeClasses,
