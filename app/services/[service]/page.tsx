@@ -16,6 +16,17 @@ import Footer from "@/components/footer";
 import ImageSlider from "@/components/slider";
 import Video from "@/lib/Video";
 
+/**
+ * @typedef {Object} ServiceData
+ * @property {string} type - The type of service.
+ * @property {Object} content - The content of the service.
+ * @property {string} content.title - The title of the service.
+ * @property {string} content.subtitle - The subtitle of the service.
+ * @property {string} content.description - The description of the service.
+ * @property {Array<string>} content.features - An array of features for the service.
+ * @property {string} content.image - The image URL of the service.
+ * @property {string} content.priceText - The price text for the service.
+ */
 export default function ServicePage() {
   const { service } = useParams() as { service: string };
   // const data = serviceData[service as keyof typeof serviceData];
